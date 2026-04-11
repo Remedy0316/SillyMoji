@@ -71,7 +71,7 @@ const CATEGORY_ICONS = {
     'Love': 'fa-heart',
     'Surprise': 'fa-face-surprise',
     'Greeting': 'fa-hand',
-    'Shrug': 'fa-person-shrugging',
+    'Shrug': 'fa-question',
     'Animals': 'fa-paw',
     'Table Flip': 'fa-table',
     'Sparkle': 'fa-wand-magic-sparkles',
