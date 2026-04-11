@@ -85,7 +85,7 @@
     padding: 6px 10px 6px 30px;
     border: 1px solid var(--SmartThemeBorderColor, #444);
     border-radius: 6px;
-    background: var(--SmartThemeQuoteColor, rgba(255, 255, 255, 0.05));
+    background: rgba(255, 255, 255, 0.05);
     color: var(--SmartThemeBodyColor, #ccc);
     font-size: 13px;
     outline: none;
@@ -98,7 +98,7 @@
 }
 
 #sillymoji-search:focus {
-    border-color: var(--SmartThemeQuoteColor, #666);
+    border-color: var(--SmartThemeBorderColor, #666);
 }
 
 /* ===== Category Tabs ===== */
@@ -132,12 +132,12 @@
 
 .sillymoji-tab:hover {
     opacity: 0.8;
-    background: var(--SmartThemeQuoteColor, rgba(255, 255, 255, 0.08));
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .sillymoji-tab.active {
     opacity: 1;
-    background: var(--SmartThemeQuoteColor, rgba(255, 255, 255, 0.12));
+    background: rgba(255, 255, 255, 0.12);
 }
 
 /* ===== Kaomoji Grid ===== */
@@ -175,12 +175,12 @@
     font-size: 14px;
     white-space: nowrap;
     transition: all 0.12s ease;
-    background: var(--SmartThemeQuoteColor, rgba(255, 255, 255, 0.04));
+    background: rgba(255, 255, 255, 0.04);
     border: 1px solid transparent;
 }
 
 .sillymoji-item:hover {
-    background: var(--SmartThemeQuoteColor, rgba(255, 255, 255, 0.12));
+    background: rgba(255, 255, 255, 0.12);
     border-color: var(--SmartThemeBorderColor, #555);
     transform: scale(1.05);
 }
