@@ -218,7 +218,17 @@ function buildKaomojiGrid(category) {
     if (list.length === 0) {
         return '<div class="sillymoji-empty">No recent kaomoji yet!</div>';
     }
-    return list.map(k => `<div class="sillymoji-item" title="Click to insert">${k}</div>`).join('');
+    let html = list.map(k => `<div class="sillymoji-item" title="Click to insert">${k}</div>`).join('');
+    if (category === 'Recent') {
+        html += '<div class="sillymoji-clear-recent" title="Clear recent history"><i class="fa-solid fa-trash-can"></i> Clear</div>';
+    }
+    return html;
+}
+
+function clearRecent() {
+    recentKaomoji = [];
+    saveRecent();
+    $('.sillymoji-grid').html(buildKaomojiGrid('Recent'));
 }
 
 function buildSearchResults(query) {
@@ -307,6 +317,9 @@ function openPicker() {
 function bindGridItems() {
     $('.sillymoji-item').off('click').on('click', function () {
         insertKaomoji($(this).text());
+    });
+    $('.sillymoji-clear-recent').off('click').on('click', function () {
+        clearRecent();
     });
 }
 
