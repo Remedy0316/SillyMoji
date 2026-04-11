@@ -8,9 +8,9 @@ Quickly insert Japanese emoticons into your chat with a single click!
 
 ## Features
 
-- **170+ kaomoji** across 11 categories
+- **350+ kaomoji** across 15 categories
 - **Quick access button** — sits on the right side of the chat input bar
-- **Category tabs** — Happy, Sad, Angry, Love, Surprise, Greeting, Shrug, Animals, Table Flip, Sparkle, Lenny
+- **Category tabs** — Happy, Sad, Angry, Love, Surprise, Greeting, Shrug, Animals, Table Flip, Sparkle, Lenny, Nervous, Dancing, Eating, Music
 - **Search** — filter kaomoji by category name
 - **Recent history** — remembers your last 20 used kaomoji
 - **Smart insert** — inserts at cursor position with automatic spacing
@@ -59,6 +59,10 @@ Press **Escape** or click outside the picker to close it.
 | 🔄 | Table Flip | `(╯°□°)╯︵ ┻━┻` `┬─┬ノ( º _ ºノ)` |
 | ✨ | Sparkle | `(ノ◕ヮ◕)ノ*:・゚✧` |
 | 😏 | Lenny | `( ͡° ͜ʖ ͡°)` |
+| 😳 | Nervous | `(⊙_⊙;)` `(°_°;)` |
+| 💃 | Dancing | `♪(┌・。・)┌` `₍₍◞( •௰• )◟₎₎` |
+| 🍴 | Eating | `(っ˘ڡ˘ς)` `( ˘▽˘)っ♨` |
+| 🎵 | Music | `♪(´ε` )` `♬♩♪♩` |
 
 ## License
 
