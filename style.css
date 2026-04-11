@@ -1,0 +1,192 @@
+/* SillyMoji - Kaomoji Picker Styles */
+
+/* ===== Trigger Button ===== */
+#sillymoji_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.15s ease;
+}
+
+#sillymoji_button:hover,
+#sillymoji_button.active {
+    opacity: 1;
+}
+
+.sillymoji-btn-icon {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1;
+    font-family: 'Segoe UI', 'Noto Sans', sans-serif;
+}
+
+/* ===== Picker Panel ===== */
+#sillymoji-picker {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    width: 340px;
+    max-height: 380px;
+    margin-bottom: 6px;
+    background: var(--SmartThemeBlurTintColor, #1a1a2e);
+    border: 1px solid var(--SmartThemeBorderColor, #444);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    overflow: hidden;
+    animation: sillymoji-slide-up 0.15s ease-out;
+}
+
+@keyframes sillymoji-slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Search ===== */
+.sillymoji-header {
+    padding: 8px 10px 4px;
+}
+
+.sillymoji-search-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.sillymoji-search-icon {
+    position: absolute;
+    left: 10px;
+    font-size: 12px;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+#sillymoji-search {
+    width: 100%;
+    padding: 6px 10px 6px 30px;
+    border: 1px solid var(--SmartThemeBorderColor, #444);
+    border-radius: 6px;
+    background: var(--SmartThemeQuoteColor, rgba(255, 255, 255, 0.05));
+    color: var(--SmartThemeBodyColor, #ccc);
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+#sillymoji-search::placeholder {
+    color: var(--SmartThemeBodyColor, #888);
+    opacity: 0.5;
+}
+
+#sillymoji-search:focus {
+    border-color: var(--SmartThemeQuoteColor, #666);
+}
+
+/* ===== Category Tabs ===== */
+.sillymoji-tabs {
+    display: flex;
+    gap: 2px;
+    padding: 4px 10px;
+    border-bottom: 1px solid var(--SmartThemeBorderColor, #333);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.sillymoji-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.sillymoji-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 26px;
+    height: 26px;
+    padding: 0 4px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    opacity: 0.5;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+}
+
+.sillymoji-tab:hover {
+    opacity: 0.8;
+    background: var(--SmartThemeQuoteColor, rgba(255, 255, 255, 0.08));
+}
+
+.sillymoji-tab.active {
+    opacity: 1;
+    background: var(--SmartThemeQuoteColor, rgba(255, 255, 255, 0.12));
+}
+
+/* ===== Kaomoji Grid ===== */
+.sillymoji-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 8px 10px;
+    overflow-y: auto;
+    flex: 1;
+    align-content: flex-start;
+    max-height: 280px;
+}
+
+.sillymoji-grid::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sillymoji-grid::-webkit-scrollbar-thumb {
+    background: var(--SmartThemeBorderColor, #444);
+    border-radius: 3px;
+}
+
+.sillymoji-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sillymoji-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
+    transition: all 0.12s ease;
+    background: var(--SmartThemeQuoteColor, rgba(255, 255, 255, 0.04));
+    border: 1px solid transparent;
+}
+
+.sillymoji-item:hover {
+    background: var(--SmartThemeQuoteColor, rgba(255, 255, 255, 0.12));
+    border-color: var(--SmartThemeBorderColor, #555);
+    transform: scale(1.05);
+}
+
+.sillymoji-item:active {
+    transform: scale(0.95);
+}
+
+/* ===== Empty State ===== */
+.sillymoji-empty {
+    width: 100%;
+    text-align: center;
+    padding: 30px 10px;
+    opacity: 0.5;
+    font-size: 14px;
+}
