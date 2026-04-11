@@ -104,15 +104,10 @@
 /* ===== Category Tabs ===== */
 .sillymoji-tabs {
     display: flex;
+    flex-wrap: wrap;
     gap: 2px;
     padding: 4px 10px;
     border-bottom: 1px solid var(--SmartThemeBorderColor, #333);
-    overflow-x: auto;
-    scrollbar-width: none;
-}
-
-.sillymoji-tabs::-webkit-scrollbar {
-    display: none;
 }
 
 .sillymoji-tab {
