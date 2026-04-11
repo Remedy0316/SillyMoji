@@ -207,7 +207,7 @@ function openPicker() {
     $('#sillymoji-picker').remove();
 
     const pickerHtml = buildPicker();
-    $('#form_sheld').append(pickerHtml);
+    $('#sillymoji-wrapper').append(pickerHtml);
 
     // Bind events
     $('.sillymoji-tab').on('click', function () {
@@ -268,13 +268,15 @@ $(document).on('keydown', function (e) {
 jQuery(async () => {
     loadRecent();
 
+    const wrapper = $('<div id="sillymoji-wrapper"></div>');
     const button = $(`
         <div id="sillymoji_button" class="interactable" title="Kaomoji Picker" tabindex="0">
             <span class="sillymoji-btn-icon">ツ</span>
         </div>
     `);
 
-    $('#rightSendForm').prepend(button);
+    wrapper.append(button);
+    $('#rightSendForm').prepend(wrapper);
 
     button.on('click', (e) => {
         e.stopPropagation();

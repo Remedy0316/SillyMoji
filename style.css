@@ -1,5 +1,12 @@
 /* SillyMoji - Kaomoji Picker Styles */
 
+/* ===== Wrapper ===== */
+#sillymoji-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 /* ===== Trigger Button ===== */
 #sillymoji_button {
     display: flex;
