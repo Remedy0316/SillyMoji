@@ -1,6 +1,61 @@
 // SillyMoji - Kaomoji Picker Extension for SillyTavern
 // Adds a kaomoji picker button to the right side of the chat input bar.
 
+import { extension_settings, getContext } from '../../../extensions.js';
+import { saveSettingsDebounced } from '../../../../script.js';
+
+const extensionName = 'third-party/SillyMoji';
+const defaultSettings = {
+    enabled: true,
+};
+
+const settingsHtml = `
+<div id="sillymoji_settings" class="sillymoji-settings">
+    <div class="inline-drawer">
+        <div class="inline-drawer-toggle inline-drawer-header">
+            <b>SillyMoji</b>
+            <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+        </div>
+        <div class="inline-drawer-content">
+            <div class="sillymoji-settings-content">
+                <label class="checkbox_label" for="sillymoji_enabled">
+                    <input type="checkbox" id="sillymoji_enabled" />
+                    <span>Enable Kaomoji Picker</span>
+                </label>
+                <span class="sillymoji-settings-note">
+                    Shows the <b>ツ</b> button on the chat input bar for quick kaomoji insertion.
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+`;
+
+function loadSettings() {
+    extension_settings[extensionName] = extension_settings[extensionName] || {};
+    if (Object.keys(extension_settings[extensionName]).length === 0) {
+        Object.assign(extension_settings[extensionName], defaultSettings);
+    }
+    $('#sillymoji_enabled').prop('checked', extension_settings[extensionName].enabled);
+    toggleExtension(extension_settings[extensionName].enabled);
+}
+
+function toggleExtension(enabled) {
+    if (enabled) {
+        $('#sillymoji-wrapper').show();
+    } else {
+        closePicker();
+        $('#sillymoji-wrapper').hide();
+    }
+}
+
+function onEnabledChange() {
+    const enabled = $('#sillymoji_enabled').is(':checked');
+    extension_settings[extensionName].enabled = enabled;
+    saveSettingsDebounced();
+    toggleExtension(enabled);
+}
+
 const KAOMOJI = {
     'Happy': [
         '(◕‿◕)', '(✿◠‿◠)', 'ヽ(>∀<☆)ノ', '(≧▽≦)', '(◠‿◠)', '(☆▽☆)',
@@ -374,6 +429,10 @@ $(document).on('keydown', function (e) {
 jQuery(async () => {
     loadRecent();
 
+    // Add settings panel to the Extensions menu (left side)
+    $('#extensions_settings').append(settingsHtml);
+    $('#sillymoji_enabled').on('change', onEnabledChange);
+
     const wrapper = $('<div id="sillymoji-wrapper"></div>');
     const button = $(`
         <div id="sillymoji_button" class="interactable" title="Kaomoji Picker" tabindex="0">
@@ -388,4 +447,7 @@ jQuery(async () => {
         e.stopPropagation();
         openPicker();
     });
+
+    // Load settings after UI is in place
+    loadSettings();
 });

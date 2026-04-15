@@ -213,3 +213,16 @@
     opacity: 0.8;
     background: rgba(255, 80, 80, 0.15);
 }
+
+/* ===== Extension Settings Panel ===== */
+.sillymoji-settings-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 4px 0;
+}
+
+.sillymoji-settings-note {
+    font-size: 0.85em;
+    opacity: 0.6;
+}
