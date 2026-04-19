@@ -372,9 +372,20 @@ function openPicker() {
     const pickerEl = document.getElementById('sillymoji-picker');
     if (pickerEl) {
         pickerEl.style.position = 'fixed';
-        pickerEl.style.bottom = (window.innerHeight - btnRect.top + 6) + 'px';
-        pickerEl.style.right = (window.innerWidth - btnRect.right) + 'px';
         pickerEl.style.setProperty('backdrop-filter', 'blur(10px)', 'important');
+
+        const pickerWidth = Math.min(340, window.innerWidth - 16);
+        pickerEl.style.width = pickerWidth + 'px';
+
+        // Calculate position: above the button, clamped to viewport
+        let left = btnRect.right - pickerWidth;
+        if (left < 8) left = 8;
+        const pickerHeight = pickerEl.offsetHeight || 380;
+        let top = btnRect.top - pickerHeight - 6;
+        if (top < 8) top = btnRect.bottom + 6; // flip below if no room above
+
+        pickerEl.style.left = left + 'px';
+        pickerEl.style.top = top + 'px';
     }
 
     // Bind events

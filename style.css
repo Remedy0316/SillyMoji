@@ -35,6 +35,7 @@
 #sillymoji-picker {
     position: fixed;
     width: 340px;
+    max-width: calc(100vw - 16px);
     max-height: 380px;
     background: var(--SmartThemeBlurTintColor, rgba(26, 26, 46, 0.75));
     backdrop-filter: blur(10px) !important;
@@ -43,7 +44,7 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
-    z-index: 1000;
+    z-index: 99999;
     overflow: hidden;
     animation: sillymoji-slide-up 0.15s ease-out;
 }
