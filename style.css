@@ -39,7 +39,7 @@
     width: 340px;
     max-height: 380px;
     margin-bottom: 6px;
-    background: var(--SmartThemeBlurTintColor, #1a1a2e);
+    background: var(--SmartThemeBlurTintColor, rgba(26, 26, 46, 0.75));
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
     border: 1px solid var(--SmartThemeBorderColor, #444);

@@ -368,10 +368,16 @@ function openPicker() {
     $('#sillymoji-wrapper').append(pickerHtml);
 
     // Force backdrop blur even when global blur is disabled
-    const pickerEl = document.getElementById('sillymoji-picker');
-    if (pickerEl) {
-        pickerEl.style.setProperty('backdrop-filter', 'blur(10px)', 'important');
-        pickerEl.style.setProperty('-webkit-backdrop-filter', 'blur(10px)', 'important');
+    if (!document.getElementById('sillymoji-blur-override')) {
+        const style = document.createElement('style');
+        style.id = 'sillymoji-blur-override';
+        style.textContent = `
+            body #sillymoji-picker {
+                backdrop-filter: blur(10px) !important;
+                -webkit-backdrop-filter: blur(10px) !important;
+            }
+        `;
+        document.head.appendChild(style);
     }
 
     // Bind events
