@@ -367,6 +367,13 @@ function openPicker() {
     const pickerHtml = buildPicker();
     $('#sillymoji-wrapper').append(pickerHtml);
 
+    // Force backdrop blur even when global blur is disabled
+    const pickerEl = document.getElementById('sillymoji-picker');
+    if (pickerEl) {
+        pickerEl.style.setProperty('backdrop-filter', 'blur(10px)', 'important');
+        pickerEl.style.setProperty('-webkit-backdrop-filter', 'blur(10px)', 'important');
+    }
+
     // Bind events
     $('.sillymoji-tab').on('click', function () {
         const category = $(this).data('category');
