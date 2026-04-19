@@ -365,11 +365,15 @@ function openPicker() {
     $('#sillymoji-picker').remove();
 
     const pickerHtml = buildPicker();
-    $('#sillymoji-wrapper').append(pickerHtml);
+    $('body').append(pickerHtml);
 
-    // Force backdrop blur even when global blur is disabled
+    // Position picker above the button
+    const btnRect = document.getElementById('sillymoji_button').getBoundingClientRect();
     const pickerEl = document.getElementById('sillymoji-picker');
     if (pickerEl) {
+        pickerEl.style.position = 'fixed';
+        pickerEl.style.bottom = (window.innerHeight - btnRect.top + 6) + 'px';
+        pickerEl.style.right = (window.innerWidth - btnRect.right) + 'px';
         pickerEl.style.setProperty('backdrop-filter', 'blur(10px)', 'important');
     }
 
