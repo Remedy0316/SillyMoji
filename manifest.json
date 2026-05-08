@@ -6,7 +6,7 @@
     "js": "index.js",
     "css": "style.css",
     "author": "Remedy",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "homePage": "https://github.com/Remedy0316/SillyMoji",
     "auto_update": true,
     "hooks": {
