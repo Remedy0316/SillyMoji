@@ -432,27 +432,33 @@ function closePicker() {
     $('#sillymoji_button').removeClass('active');
 }
 
-// Close picker when clicking outside
-$(document).on('click', function (e) {
+const NS = 'sillymoji';
+
+function onDocumentClick(e) {
     if (pickerOpen && !$(e.target).closest('#sillymoji-picker, #sillymoji_button').length) {
         closePicker();
     }
-});
+}
 
-// Close picker on Escape
-$(document).on('keydown', function (e) {
+function onDocumentKeydown(e) {
     if (e.key === 'Escape' && pickerOpen) {
         closePicker();
     }
-});
+}
 
-// Init
-jQuery(async () => {
+// Activate hook — called by SillyTavern's extension loader (1.18.0+).
+// Also invoked by the legacy jQuery ready fallback below for older versions.
+// Guarded so a double-call (hook + fallback on 1.18.0+) is a no-op.
+let initialized = false;
+export async function init() {
+    if (initialized) return;
+    initialized = true;
+
     loadRecent();
 
     // Add settings panel to the Extensions menu (left side)
     $('#extensions_settings').append(settingsHtml);
-    $('#sillymoji_enabled').on('change', onEnabledChange);
+    $('#sillymoji_enabled').on('change.' + NS, onEnabledChange);
 
     const wrapper = $('<div id="sillymoji-wrapper"></div>');
     const button = $(`
@@ -464,11 +470,37 @@ jQuery(async () => {
     wrapper.append(button);
     $('#rightSendForm').prepend(wrapper);
 
-    button.on('click', (e) => {
+    button.on('click.' + NS, (e) => {
         e.stopPropagation();
         openPicker();
     });
 
+    // Close picker when clicking outside / on Escape
+    $(document).on('click.' + NS, onDocumentClick);
+    $(document).on('keydown.' + NS, onDocumentKeydown);
+
     // Load settings after UI is in place
     loadSettings();
+}
+
+// Clean hook — called when the user opts in to clearing extension data
+// (via the broom button or the "Also clean up extension data" checkbox on uninstall).
+export async function clean() {
+    try {
+        localStorage.removeItem(STORAGE_KEY);
+        if (extension_settings[extensionName]) {
+            delete extension_settings[extensionName];
+            saveSettingsDebounced();
+        }
+        recentKaomoji = [];
+    } catch (err) {
+        console.error('[SillyMoji] clean() failed:', err);
+    }
+}
+
+// Backward-compat fallback: on SillyTavern versions without the activate hook,
+// the loader will not call init(), so kick it off here. The guard inside init()
+// makes this a no-op on 1.18.0+ where the hook ran first.
+jQuery(async () => {
+    await init();
 });
