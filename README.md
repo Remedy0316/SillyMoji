@@ -4,8 +4,6 @@ A kaomoji (顔文字) picker extension for [SillyTavern](https://github.com/Sill
 
 Quickly insert Japanese emoticons into your chat with a single click!
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-
 ## Features
 
 - **460+ kaomoji** across 19 categories
