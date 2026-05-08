@@ -1,4 +1,4 @@
-# SillyMoji (◕‿◕)
+# SillyMoji `_(:з」∠)_`
 
 A kaomoji (顔文字) picker extension for [SillyTavern](https://github.com/SillyTavern/SillyTavern).
 
