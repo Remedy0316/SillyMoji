@@ -28,7 +28,7 @@ Quickly insert Japanese emoticons into your chat with a single click!
 2. Go to `data/<user-handle>/extensions/third-party/`
 3. Clone or copy this repository:
    ```bash
-   git clone https://github.com/YourUsername/SillyMoji.git
+   git clone https://github.com/Remedy0316/SillyMoji.git
    ```
 4. Restart SillyTavern
 
